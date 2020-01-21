@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vaehome/ui/page/vae/vae_home_index.dart';
 
-class BottomNavigationWidget extends StatefulWidget{
+class VaeHome extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return BottomNavigationWidgetState();
+    return VaeHomeState();
   }
 }
 
-class BottomNavigationWidgetState extends State<BottomNavigationWidget>{
+class VaeHomeState extends State<VaeHome>{
   int _currentIndex = 0;
   var _controller =  PageController(
     initialPage: 0,
