@@ -10,7 +10,6 @@ class BottomNavigationWidget extends StatefulWidget{
 }
 
 class BottomNavigationWidgetState extends State<BottomNavigationWidget>{
-  final _bottomNavigationColor = Colors.blue;
   int _currentIndex = 0;
   var _controller =  PageController(
     initialPage: 0,
@@ -62,6 +61,8 @@ class BottomNavigationWidgetState extends State<BottomNavigationWidget>{
           });
         },
         type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.lightBlue,
+        unselectedItemColor: Colors.black26,
       ),
     );
   }
