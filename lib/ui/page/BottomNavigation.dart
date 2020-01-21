@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_vaehome/ui/page/vae/vae_home_index.dart';
 
 class BottomNavigationWidget extends StatefulWidget{
   @override
@@ -31,27 +31,27 @@ class BottomNavigationWidgetState extends State<BottomNavigationWidget>{
       body: PageView(
         controller: _controller,
         children: <Widget>[
-
+          VaeHomeScreen()
         ],
         physics: NeverScrollableScrollPhysics(), //不重复滑动效果？
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: _bottomNavigationColor,),
-              title: Text('Vae', style: TextStyle(color: _bottomNavigationColor),)),
+              icon: Icon(Icons.home),
+              title: Text('Vae',)),
           BottomNavigationBarItem(
-              icon: Icon(Icons.apps, color: _bottomNavigationColor,),
-              title: Text('圈子', style: TextStyle(color: _bottomNavigationColor),)),
+              icon: Icon(Icons.apps),
+              title: Text('圈子',)),
           BottomNavigationBarItem(
-              icon: Icon(Icons.language, color: _bottomNavigationColor,),
-              title: Text('发现', style: TextStyle(color: _bottomNavigationColor),)),
+              icon: Icon(Icons.language,),
+              title: Text('发现')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.message, color: _bottomNavigationColor,),
-              title: Text('消息', style: TextStyle(color: _bottomNavigationColor),)),
+              icon: Icon(Icons.message,),
+              title: Text('消息')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person, color: _bottomNavigationColor,),
-              title: Text('我', style: TextStyle(color: _bottomNavigationColor),)
+              icon: Icon(Icons.person,),
+              title: Text('我')
           )
         ],
         currentIndex: _currentIndex,
@@ -61,6 +61,7 @@ class BottomNavigationWidgetState extends State<BottomNavigationWidget>{
             _currentIndex = index;
           });
         },
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }
