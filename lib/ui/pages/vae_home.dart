@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_vaehome/ui/page/vae/vae_home_index.dart';
+import 'package:flutter_vaehome/ui/pages/vae/vae_home_index.dart';
 
 class VaeHome extends StatefulWidget{
   @override

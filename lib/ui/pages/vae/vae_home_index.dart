@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vaehome/ui/pages/vae/vae_home_track.dart';
 import 'package:flutter_vaehome/ui/widget/MyUnderlineTabindicator.dart';
 
 class VaeHomeScreen extends StatefulWidget{
@@ -11,7 +12,7 @@ class VaeHomeScreen extends StatefulWidget{
 
 class VaeHomeScreenState extends State<VaeHomeScreen> with SingleTickerProviderStateMixin{
   TabController _tabController;
-  ScrollController _scrollController;
+//  ScrollController _scrollController;
   List tabs = ['动态', '行程', '活动'];
   
   @override
@@ -19,7 +20,7 @@ class VaeHomeScreenState extends State<VaeHomeScreen> with SingleTickerProviderS
     // TODO: implement initState
     super.initState();
     _tabController = TabController(length: tabs.length, vsync: this);
-    _scrollController = ScrollController(initialScrollOffset: 0.0);
+//    _scrollController = ScrollController(initialScrollOffset: 0.0);
   }
 
   @override
@@ -78,7 +79,8 @@ class VaeHomeScreenState extends State<VaeHomeScreen> with SingleTickerProviderS
       ),
       body: new TabBarView(
         children: [
-          Text('1'),
+          VaeTrackScreen(),
+//          Text('1'),
           Text('1'),
           Text('1'),
         ],
