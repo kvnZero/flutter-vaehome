@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_vaehome/ui/widget/HomeCard.dart';
 
 class SwiperWidget extends StatefulWidget {
   @override
@@ -15,7 +16,7 @@ class SwiperWidgetState extends State<SwiperWidget> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      height: 200,
+      height: 185,
       color: Color(0xFFf0f0f0),
       child: new Padding(
         padding: EdgeInsets.only(top:10,bottom: 20),
@@ -29,9 +30,7 @@ class SwiperWidgetState extends State<SwiperWidget> {
             itemBuilder: (context, index) {
               return new Container(
                 color: Colors.grey,
-                child: new Center(
-                  child: new Text("$index"),
-                ),
+                child: CardWidge()
               );
             }),
       )

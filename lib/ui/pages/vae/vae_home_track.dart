@@ -22,7 +22,7 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
 
   Future getPageInfo() async{
     setState(() {
-      bannerUrl = "http://img.sccnn.com/simg/342/11279.jpg";
+      bannerUrl = "http://5b0988e595225.cdn.sohucs.com/images/20200103/0eddf8d53c1e4262aef9952f3c8bbfc3.jpeg";
     });
   }
 
@@ -39,7 +39,7 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Container(
-                height: 200,
+                height: 210,
                 child: new Image.network(bannerUrl, fit: BoxFit.fill,),
               ),
             ],
@@ -52,31 +52,44 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
               Container(
                 height: 35,
                 color: Color(0xFFf0f0f0),
-                child:Padding(padding: EdgeInsets.all((5.0)),child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Expanded(
-//                    alignment: FractionalOffset.topRight,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Padding( padding: EdgeInsets.only(top: 2.5),child: Icon(Icons.date_range, color: Colors.lightBlueAccent,size: 16,)),
-                          Padding( padding: EdgeInsets.only(left: 4),child: Text("许嵩来了",style: TextStyle(fontSize: 14,color: Colors.black87)),),
-                        ],
-                      ),
+                    new Align(
+                      alignment: FractionalOffset.topLeft,
+                      child: Padding(
+                          padding: EdgeInsets.all(8),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(Icons.date_range, color: Colors.lightBlueAccent,size: 16,),
+                              Text("许嵩来了", style: TextStyle(fontSize: 14),),
+                            ],
+                          ),)
                     ),
                     new Align(
                       alignment: FractionalOffset.topRight,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+                      child:Row(
                         children: <Widget>[
-                          Padding(padding: EdgeInsets.only(bottom: 2),child:Text("更多", style: TextStyle(fontSize: 14,color: Colors.black38),textAlign: TextAlign.right)),
-                          Padding(padding: EdgeInsets.all(0),child:Icon(Icons.chevron_right))
+                          FlatButton(
+                            highlightColor: Color(0xFFf0f0f0),
+                            padding: EdgeInsets.all(0),
+                            splashColor: Color(0xFFf0f0f0),
+                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            onPressed: _onRefresh,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                Text('更多',style: TextStyle(fontSize: 14,color: Colors.black38)),
+                                Icon(Icons.chevron_right),
+                              ],
+                            ),
+                          )
+//                          Text('更多', style: TextStyle(fontSize: 14,color: Colors.black38)),
                         ],
-                      ),
-                    )
+                      )
+                    ),
                   ],
-                ),)
+                ),
               ),
               SwiperWidget(),
             ],
