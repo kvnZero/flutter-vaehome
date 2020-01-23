@@ -15,7 +15,7 @@ class NewsState extends State<News>{
     // TODO: implement build
     return Container(
       decoration: new BoxDecoration(
-        border: new Border(top: BorderSide(width: 1,color: Colors.black12, style: BorderStyle.solid)),
+        border: new Border(top: BorderSide(width: 0.3,color: Colors.black12, style: BorderStyle.solid)),
       ),
       height: 175,
       child: Padding(padding: EdgeInsets.only(top: 20,bottom: 5,left: 10,right: 10),
@@ -28,7 +28,7 @@ class NewsState extends State<News>{
                   Container(
                     height: 100,
                     width: 100,
-                    child: Image.network('https://i03piccdn.sogoucdn.com/c54eb831b18dcd70',fit: BoxFit.fill,),
+                    child: Padding(padding: EdgeInsets.all(0),child: Image.network('https://i03piccdn.sogoucdn.com/c54eb831b18dcd70',fit: BoxFit.fill,),)
                   ),
                   Container(
                     height: 100,

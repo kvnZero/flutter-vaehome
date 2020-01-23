@@ -85,7 +85,7 @@ class HomeNewsState extends State<HomeNews> with SingleTickerProviderStateMixin{
       navigationBar: new CupertinoNavigationBar(
         actionsForegroundColor: Colors.lightBlue,
         backgroundColor: Colors.white,
-//        border: null,
+        border: null,
         middle: new CupertinoSegmentedControl<int>(
           children: {
             1: Padding(padding:EdgeInsets.only(left: 18,right: 18),

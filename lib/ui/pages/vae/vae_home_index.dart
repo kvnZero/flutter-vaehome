@@ -65,23 +65,24 @@ class VaeHomeScreenState extends State<VaeHomeScreen> with SingleTickerProviderS
 //
 
     return new Scaffold(
-      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: TabBar(
-          indicatorPadding: EdgeInsets.all(0),
-          tabs: tabs.map((e)=>Tab(text: e,)).toList(),
-          controller: _tabController,
-          indicator: MyUnderlineTabIndicator(
-            borderSide: BorderSide(width: 2.0, color: Colors.lightBlue)
+        flexibleSpace: FlexibleSpaceBar(
+          titlePadding: EdgeInsets.all(0),
+          title: TabBar(
+            tabs: tabs.map((e)=>Tab(text: e,)).toList(),
+            controller: _tabController,
+            indicator: MyUnderlineTabIndicator(
+                borderSide: BorderSide(width: 2.0, color: Colors.lightBlue)
+            ),
+            labelColor: Colors.lightBlue,
+            unselectedLabelColor: Colors.black26,
+            labelStyle: TextStyle(fontSize: 15),
           ),
-          labelColor: Colors.lightBlue,
-          unselectedLabelColor: Colors.black26,
-          labelStyle: TextStyle(fontSize: 15),
         ),
       ),
       body: new TabBarView(
         children: [
-          VaeTrackScreen(),
+          MediaQuery.removePadding(removeTop: true,context: context, child: VaeTrackScreen()),
 //          MediaQuery.removePadding(removeTop: true,context: context, child: new VaeTrackScreen()),
 //          Text('1'),
           Text('1'),
