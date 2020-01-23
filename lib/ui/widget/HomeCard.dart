@@ -56,8 +56,8 @@ class CardWidgeState extends State<CardWidge>{
 //                  Icon(Icons.person,size: 42,),
                   Padding(padding: EdgeInsets.only(left: 5), child:
                   Column(mainAxisAlignment: MainAxisAlignment.start,children: <Widget>[
-                    Container(width: 245,height: 20, child: Text("测试我我我我我我我我我我我我我我我我我你好我你你好他我一你这我",overflow: TextOverflow.ellipsis,maxLines: 1,style: TextStyle(color: Colors.black54,fontSize: 12),),),
-                    Container(width: 245,height: 20, child: Row(crossAxisAlignment: CrossAxisAlignment.start,children: <Widget>[
+                    Container(width:  220,height: 20, child: Text("测试我我我我我我我我我我我我我我我我我你好我你你好他我一你这我",overflow: TextOverflow.ellipsis,maxLines: 1,style: TextStyle(color: Colors.black54,fontSize: 12),),),
+                    Container(width: 220,height: 20, child: Row(crossAxisAlignment: CrossAxisAlignment.start,children: <Widget>[
                       Text("许嵩", style: TextStyle(fontSize: 12),),
                       Padding(padding: EdgeInsets.only(left: 5),child: Icon(Icons.thumb_up, color: Colors.blueAccent,size: 16,),),
                       Padding(padding: EdgeInsets.only(left: 5),child: Icon(Icons.insert_emoticon, color: Colors.blueAccent,size: 16,),),

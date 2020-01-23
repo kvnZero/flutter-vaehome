@@ -65,8 +65,10 @@ class VaeHomeScreenState extends State<VaeHomeScreen> with SingleTickerProviderS
 //
 
     return new Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: TabBar(
+          indicatorPadding: EdgeInsets.all(0),
           tabs: tabs.map((e)=>Tab(text: e,)).toList(),
           controller: _tabController,
           indicator: MyUnderlineTabIndicator(
@@ -80,6 +82,7 @@ class VaeHomeScreenState extends State<VaeHomeScreen> with SingleTickerProviderS
       body: new TabBarView(
         children: [
           VaeTrackScreen(),
+//          MediaQuery.removePadding(removeTop: true,context: context, child: new VaeTrackScreen()),
 //          Text('1'),
           Text('1'),
           Text('1'),

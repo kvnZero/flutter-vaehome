@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vaehome/ui/widget/MySwiper.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_vaehome/ui/widget/HomeNews.dart';
+import 'package:flutter_vaehome/ui/widget/TestW.dart';
 
 class VaeTrackScreen extends StatefulWidget{
   @override
@@ -30,25 +32,13 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
   Widget build(BuildContext context) {
     // TODO: implement build
     getPageInfo();
-    return RefreshIndicator(
-      child: new ListView(
-        children: <Widget>[
-          new Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+    return  RefreshIndicator(
+          child: new ListView(
             children: <Widget>[
               Container(
                 height: 210,
                 child: new Image.network(bannerUrl, fit: BoxFit.fill,),
               ),
-            ],
-          ),
-          new Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
               Container(
                 height: 35,
                 color: Color(0xFFf0f0f0),
@@ -56,8 +46,8 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     new Align(
-                      alignment: FractionalOffset.topLeft,
-                      child: Padding(
+                        alignment: FractionalOffset.topLeft,
+                        child: Padding(
                           padding: EdgeInsets.all(8),
                           child: Row(
                             children: <Widget>[
@@ -67,36 +57,37 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
                           ),)
                     ),
                     new Align(
-                      alignment: FractionalOffset.topRight,
-                      child:Row(
-                        children: <Widget>[
-                          FlatButton(
-                            highlightColor: Color(0xFFf0f0f0),
-                            padding: EdgeInsets.all(0),
-                            splashColor: Color(0xFFf0f0f0),
-                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            onPressed: _onRefresh,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text('更多',style: TextStyle(fontSize: 14,color: Colors.black38)),
-                                Icon(Icons.chevron_right),
-                              ],
-                            ),
-                          )
+                        alignment: FractionalOffset.topRight,
+                        child:Row(
+                          children: <Widget>[
+                            FlatButton(
+                              highlightColor: Color(0xFFf0f0f0),
+                              padding: EdgeInsets.all(0),
+                              splashColor: Color(0xFFf0f0f0),
+                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              onPressed: _onRefresh,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Text('更多',style: TextStyle(fontSize: 14,color: Colors.black38)),
+                                  Icon(Icons.chevron_right),
+                                ],
+                              ),
+                            )
 //                          Text('更多', style: TextStyle(fontSize: 14,color: Colors.black38)),
-                        ],
-                      )
+                          ],
+                        )
                     ),
                   ],
                 ),
               ),
               SwiperWidget(),
+              HomeNews()
+//              Expanded(child: TestW(),)
+//              TestW()
             ],
           ),
-        ],
-      ),
-      onRefresh: _onRefresh);
+          onRefresh: _onRefresh);
   }
 
   Future<Null> _onRefresh() async {
