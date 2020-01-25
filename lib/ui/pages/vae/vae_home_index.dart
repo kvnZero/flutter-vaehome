@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vaehome/ui/pages/vae/vae_home_track.dart';
 import 'package:flutter_vaehome/ui/pages/vae/vae_home_schedule.dart';
 import 'package:flutter_vaehome/ui/widget/MyUnderlineTabindicator.dart';
+import 'package:flutter_vaehome/ui/pages/vae/vae_home_party.dart';
 
 class VaeHomeScreen extends StatefulWidget{
   @override
@@ -85,7 +86,7 @@ class VaeHomeScreenState extends State<VaeHomeScreen> with SingleTickerProviderS
         children: [
           MediaQuery.removePadding(removeTop: true,context: context, child: VaeTrackScreen()),
           MediaQuery.removePadding(removeTop: true,context: context, child: VaeScheduleScreen()),
-          Text('1'),
+          MediaQuery.removePadding(removeTop: true,context: context, child: VaePartyScreen()),
         ],
         controller: _tabController,),
     );
