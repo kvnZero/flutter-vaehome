@@ -31,32 +31,38 @@ class VaeScheduleScreenState extends State<VaeScheduleScreen>{
   Widget build(BuildContext context) {
     // TODO: implement build
     getPageInfo();
-    return new Scaffold(
-      body: Column(
-        children: <Widget>[
-          Container(
-            height: 210,
-            child: new Image.network(bannerUrl, fit: BoxFit.fill,),
-          ),
-          Expanded(child: ListView.builder(itemCount: 10,itemBuilder: (content, index){
-            return Material(
-              child: StickyHeader(
-                  header: Container(height: 50,
-                    color: Color.fromRGBO(10, 10, 10, 0.05),
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    child: Text("2019-12", style: TextStyle(color: Colors.black26,fontSize: 16),),),
-                  content: new Container(
-                    height: 130,
-                    child: FlatButton(onPressed: _onRefresh, child: StepWidget())
-                  )
-              ),
-            );
-          }
-          ))
-        ],
-      )
-    );
+    return new RefreshIndicator(
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, i) => buildWidget(i),
+        ),
+        onRefresh: _onRefresh);
+//    return new Scaffold(
+//      body: Column(
+//        children: <Widget>[
+//          Container(
+//            height: 210,
+//            child: new Image.network(bannerUrl, fit: BoxFit.fill,),
+//          ),
+//          Expanded(child: ListView.builder(itemCount: 10,itemBuilder: (content, index){
+//            return Material(
+//              child: StickyHeader(
+//                  header: Container(height: 50,
+//                    color: Color.fromRGBO(10, 10, 10, 0.05),
+//                    alignment: Alignment.centerLeft,
+//                    padding: EdgeInsets.symmetric(horizontal: 16),
+//                    child: Text("2019-12", style: TextStyle(color: Colors.black26,fontSize: 16),),),
+//                  content: new Container(
+//                    height: 130,
+//                    child: FlatButton(onPressed: _onRefresh, child: StepWidget())
+//                  )
+//              ),
+//            );
+//          }
+//          ))
+//        ],
+//      )
+//    );
   }
 
   Future<Null> _onRefresh() async {
@@ -65,4 +71,33 @@ class VaeScheduleScreenState extends State<VaeScheduleScreen>{
       getPageInfo();
     });
   }
+
+  Widget pageCover(){
+    return Container(
+      height: 210,
+      child: new Image.network(bannerUrl, fit: BoxFit.fill,),
+    );
+  }
+
+  Widget scheduleWidget(){
+    return Material(
+      child: StickyHeader(
+          header: Container(height: 50,
+            color: Color.fromRGBO(10, 10, 10, 0.05),
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Text("2019-12", style: TextStyle(color: Colors.black26,fontSize: 16),),),
+          content: new Container(
+              height: 130,
+              child: FlatButton(onPressed: _onRefresh, child: StepWidget())
+          )
+      ),
+    );
+  }
+
+  Widget buildWidget(i){
+    if(i==0) return pageCover();
+    return scheduleWidget();
+  }
+
 }
