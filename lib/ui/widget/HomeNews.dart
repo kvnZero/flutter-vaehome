@@ -110,15 +110,12 @@ class HomeNewsState extends State<HomeNews> with SingleTickerProviderStateMixin{
           },
         ),
       ),
-      child: new Container(
-        height: MediaQuery.of(context).size.height-200,
-        color: Colors.white,
-        child: ListView.builder(
-            itemCount: 5,
-            itemBuilder: (content, i){
-              return new News();
-            })
-      ),
+      child: News(),
+//        child: ListView.builder(
+//            itemCount: 5,
+//            itemBuilder: (content, i){
+//              return new News();
+//            })
     );
   }
 }

@@ -84,8 +84,6 @@ class VaeHomeScreenState extends State<VaeHomeScreen> with SingleTickerProviderS
       body: new TabBarView(
         children: [
           MediaQuery.removePadding(removeTop: true,context: context, child: VaeTrackScreen()),
-//          MediaQuery.removePadding(removeTop: true,context: context, child: new VaeTrackScreen()),
-//          Text('1'),
           MediaQuery.removePadding(removeTop: true,context: context, child: VaeScheduleScreen()),
           Text('1'),
         ],
