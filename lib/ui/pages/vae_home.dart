@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vaehome/ui/pages/vae/vae_home_index.dart';
+import 'package:flutter_vaehome/ui/pages/group/vae_group_index.dart';
 
 class VaeHome extends StatefulWidget{
   @override
@@ -30,7 +31,8 @@ class VaeHomeState extends State<VaeHome>{
       body: PageView(
         controller: _controller,
         children: <Widget>[
-          VaeHomeScreen()
+          VaeHomeScreen(),
+          VaeGroupScreen()
         ],
         physics: NeverScrollableScrollPhysics(), //不重复滑动效果？
       ),
