@@ -115,7 +115,7 @@ class _LinePaint extends CustomPainter {
     // TODO: implement paint
     double mida = 7;
     canvas.drawLine(Offset(mida,-25), Offset(mida,-3), _paint);
-    canvas.drawLine(Offset(mida,15), Offset(mida,120), _paint);
+    canvas.drawLine(Offset(mida,15), Offset(mida,105), _paint);
   }
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
