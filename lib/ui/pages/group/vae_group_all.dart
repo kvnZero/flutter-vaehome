@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutter_vaehome/ui/widget/NewsListWidget.dart';
+import 'package:flutter_vaehome/ui/widget/PostWidget.dart';
+
 
 class GroupAllScreen extends StatefulWidget{
   @override
@@ -127,7 +128,7 @@ class GroupAllScreenState extends State<GroupAllScreen>{
 
   Widget buildWidget(i){
     if(i==0) return groupClass();
-    return News();
+    return Container(color: Colors.white, margin: EdgeInsets.only(top: 10),child: Container(padding: EdgeInsets.all(15),child: Post(),),);
   }
 
   Widget myIconButton(info){
