@@ -87,12 +87,14 @@ class VaeScheduleScreenState extends State<VaeScheduleScreen>{
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Text("2019-12", style: TextStyle(color: Colors.black26,fontSize: 16),),),
-          content: new Container(
-              height: 130,
-              child: FlatButton(onPressed: _onRefresh, child: StepWidget())
-          )
-      ),
-    );
+          content: Column(
+              children: <Widget>[
+                new Container(height: 130, child: FlatButton(onPressed: _onRefresh, child: StepWidget())),
+                new Container(height: 130, child: FlatButton(onPressed: _onRefresh, child: StepWidget())),
+              ],
+            ),
+          ),
+      );
   }
 
   Widget buildWidget(i){
