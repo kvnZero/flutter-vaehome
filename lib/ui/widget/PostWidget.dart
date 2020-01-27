@@ -1,7 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
+import 'package:photo_view/photo_view_gallery.dart';
+import 'ImageShow.dart';
 
 class PostInfo{
   String type;
@@ -61,7 +62,12 @@ class PostState extends State<Post>{
           child.add(Container(
             width: MediaQuery.of(context).size.width-20,
             padding: EdgeInsets.only(bottom: 10),
-            child: (postInfo.img.length == 1) ? Container(height: 200,alignment: Alignment.topLeft,child: Image.network(postInfo.img[0],),) : GridView.builder(
+            child: (postInfo.img.length == 1) ? Container(height: 200,alignment: Alignment.topLeft,
+              child: GestureDetector(
+                onTap: () {
+                  _jumpToGallery(0,postInfo.img);
+                },
+              child: Image.network(postInfo.img[0],),)) : GridView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -71,6 +77,9 @@ class PostState extends State<Post>{
                   childAspectRatio: 1.0),
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
+                  onTap: () {
+                    _jumpToGallery(index,postInfo.img);
+                  },
                   child: Image.network(
                     postInfo.img[index],
                     fit: BoxFit.cover,
@@ -166,5 +175,14 @@ class PostState extends State<Post>{
         )
       ],
     );
+  }
+
+  void _jumpToGallery(index, list) {
+    Navigator.push(context, MaterialPageRoute(builder: (_) {
+      return PhotpGalleryPage(
+        index: index,
+        photoList: list,
+      );
+    }));
   }
 }
