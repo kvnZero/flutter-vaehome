@@ -26,7 +26,8 @@ class VaeGroupScreenState extends State<VaeGroupScreen> with SingleTickerProvide
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    bool showRed = true;
+//    bool showRed = true;
+    Map showRed = {'广场':false, '热门':true, '关注':false};
 
     return new Scaffold(
       appBar: AppBar(
@@ -43,8 +44,8 @@ class VaeGroupScreenState extends State<VaeGroupScreen> with SingleTickerProvide
           title: Padding(padding: EdgeInsets.only(left: 50,right: 50),
           child: TabBar(
             tabs: tabs.map((e)=>Tab(child: CustomPaint(
-              painter: showRed ? _RoundPaint() : null,
-              child: Text(e),
+              painter: showRed[e] ? _RoundPaint() : null,
+              child: Text(e,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15,color: Colors.black54),),
             ),)).toList(),
             controller: _tabController,
             indicator: MyUnderlineTabIndicator(

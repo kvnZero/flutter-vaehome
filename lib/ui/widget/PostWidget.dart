@@ -121,8 +121,8 @@ class PostState extends State<Post>{
                   Padding(padding: EdgeInsets.only(left: 5),
                     child: Column(
                       children: <Widget>[
-                        Container(width: 200,child: Text("小管家",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400),),),
-                        Container(margin: EdgeInsets.only(top: 1),width: 200,child: Text("01月25 00:00", style: TextStyle(fontSize: 12,fontWeight: FontWeight.w200),),),
+                        Container(width: 200,child: Text("小管家",style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400),),),
+                        Container(margin: EdgeInsets.only(top: 0),width: 200,child: Text("01月25 00:00", style: TextStyle(fontSize: 12,color: Colors.black26,),),),
                       ],
                     ),
                   ),
@@ -131,7 +131,7 @@ class PostState extends State<Post>{
               IconButton(
                 icon: Icon(Icons.more_horiz),
                 iconSize: 18,
-                color: Colors.black26,
+                color: Colors.black12,
                 onPressed: (){},
               )
             ],
@@ -149,7 +149,7 @@ class PostState extends State<Post>{
               children: <Widget>[
                 Container(
                   width: 42,
-                  child: FlatButton(child: Text('生活圈',),textTheme: ButtonTextTheme.primary,padding: EdgeInsets.zero,onPressed: (){},),
+                  child: FlatButton(child: Text('生活圈',style: TextStyle(fontWeight: FontWeight.w100,fontSize: 12),),textTheme: ButtonTextTheme.primary,padding: EdgeInsets.zero,onPressed: (){},),
                 ),
                 Row(
                   children: <Widget>[

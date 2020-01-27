@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_vaehome/ui/widget/PostWidget.dart';
-
+import 'dart:io';
 
 class GroupAllScreen extends StatefulWidget{
   @override
@@ -92,7 +92,7 @@ class GroupAllScreenState extends State<GroupAllScreen>{
 
 
     return Container(
-        height: 160,
+        height: 170,
         color: Colors.white,
         child: Padding(
           padding: EdgeInsets.only(top:10,left: 10,right: 10,bottom: 0),
@@ -113,8 +113,10 @@ class GroupAllScreenState extends State<GroupAllScreen>{
               pagination: new SwiperPagination(
                 alignment: Alignment.bottomCenter,
                 builder: new DotSwiperPaginationBuilder(
-                    activeColor: Colors.blue,
+                  activeColor: Colors.blue,
                   color: Colors.black12,
+                  size: 8,
+                  activeSize: 8
                 ),
               ),
               itemBuilder: (context, index) {
@@ -132,22 +134,23 @@ class GroupAllScreenState extends State<GroupAllScreen>{
   }
 
   Widget myIconButton(info){
-
-    return Padding(padding: EdgeInsets.all(5),
+    double vP = Platform.isAndroid ? 16.5 : 18.5;
+    return Padding(padding: EdgeInsets.only(left: vP,right: vP,top: 10,bottom: 10),
+    child: Container(width: 60,
     child: FlatButton(
       padding: EdgeInsets.zero,
       onPressed: (){print(info['url']);},
       child: Column(
         children: <Widget>[
           Center(
-            child: Icon(info['icon'],size: 32,color: Colors.lightBlueAccent,),
+            child: Padding(padding: EdgeInsets.only(bottom: 3),child: Icon(info['icon'],size: 28,color: Colors.blue[300],),)
           ),
           Center(
             child: Text(info['title'],style: TextStyle(fontSize: 12,color: Colors.black26),),
           ),
         ],
       ),
-    ),);
+    ),),);
   }
 
 }
