@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vaehome/ui/widget/MyUnderlineTabindicator.dart';
 import 'package:flutter_vaehome/ui/pages/group/vae_group_all.dart';
+import 'package:flutter_vaehome/ui/pages/group/vae_group_hot.dart';
+import 'package:flutter_vaehome/ui/pages/group/vae_group_follow.dart';
 
 class VaeGroupScreen extends StatefulWidget{
   @override
@@ -60,8 +62,8 @@ class VaeGroupScreenState extends State<VaeGroupScreen> with SingleTickerProvide
       body: new TabBarView(
         children: <Widget>[
           GroupAllScreen(),
-          Text("1"),
-          Text("1"),
+          GroupHotScreen(),
+          GroupFollowScreen()
 //        children: [
 //          MediaQuery.removePadding(removeTop: true,context: context, child: VaeTrackScreen()),
 //          MediaQuery.removePadding(removeTop: true,context: context, child: VaeScheduleScreen()),
