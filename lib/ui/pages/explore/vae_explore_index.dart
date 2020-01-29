@@ -115,28 +115,31 @@ class VaeExploreScreenState extends State<VaeExploreScreen> with SingleTickerPro
         ),
       ],
     ) : Icon(icon,size: 28,color: iconColor);
-   return Container(
-     padding: EdgeInsets.all(10),
-     decoration: new BoxDecoration(
-       border: new Border(bottom: BorderSide(width: 0.3,color: Colors.black12, style: BorderStyle.solid)),
-     ),
-     child: Row(
-       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-       children: <Widget>[
-         Row(
+   return FlatButton(onPressed: (){print("1");},
+       padding: EdgeInsets.zero,
+       child: Container(
+         padding: EdgeInsets.all(10),
+         decoration: new BoxDecoration(
+           border: new Border(bottom: BorderSide(width: 0.3,color: Colors.black12, style: BorderStyle.solid)),
+         ),
+         child: Row(
+           mainAxisAlignment: MainAxisAlignment.spaceBetween,
            children: <Widget>[
-            redB,
-             Padding(padding: EdgeInsets.only(left: 10),child: Text(title, style: TextStyle(fontSize: 16,fontWeight: FontWeight.w300),),)
+             Row(
+               children: <Widget>[
+                 redB,
+                 Padding(padding: EdgeInsets.only(left: 10),child: Text(title, style: TextStyle(fontSize: 16,fontWeight: FontWeight.w300),),)
+               ],
+             ),
+             Row(
+               children: <Widget>[
+                 Text(text,style: TextStyle(fontSize: 14,color: Colors.black26),),
+                 Icon(Icons.chevron_right,size: 32,color: Colors.black26,),
+               ],
+             )
            ],
          ),
-         Row(
-           children: <Widget>[
-             Text(text,style: TextStyle(fontSize: 14,color: Colors.black26),),
-             Icon(Icons.chevron_right,size: 32,color: Colors.black26,),
-           ],
-         )
-       ],
-     ),
+       )
    );
   }
 }
