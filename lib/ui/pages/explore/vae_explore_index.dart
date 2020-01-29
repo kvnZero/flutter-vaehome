@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_vaehome/ui/widget/MyUnderlineTabindicator.dart';
-import 'package:flutter_vaehome/ui/pages/group/vae_group_all.dart';
-import 'package:flutter_vaehome/ui/pages/group/vae_group_hot.dart';
-import 'package:flutter_vaehome/ui/pages/group/vae_group_follow.dart';
+import 'package:badges/badges.dart';
 
 class VaeExploreScreen extends StatefulWidget{
   @override
@@ -15,18 +12,18 @@ class VaeExploreScreen extends StatefulWidget{
 class VaeExploreScreenState extends State<VaeExploreScreen> with SingleTickerProviderStateMixin{
 
   List<List<Map>> listButton = [
-    [{'icon':Icons.games,'color':Colors.orange, 'title':'游戏大厅','text':''},
-      {'icon':Icons.explore,'color':Colors.blue, 'title':'附近的人','text':''},
-      {'icon':Icons.terrain,'color':Colors.green, 'title':'发现群组','text':''},
+    [{'icon':Icons.games,'color':Colors.orange, 'title':'游戏大厅','text':'','value':0},
+      {'icon':Icons.explore,'color':Colors.blue, 'title':'附近的人','text':'','value':0},
+      {'icon':Icons.terrain,'color':Colors.green, 'title':'发现群组','text':'','value':0},
     ],
     [
-      {'icon':Icons.date_range,'color':Colors.brown, 'title':'签到','text':'未签到'},
-      {'icon':Icons.filter_none,'color':Colors.orange, 'title':'任务中心','text':'完成度37.5%'},
-      {'icon':Icons.equalizer,'color':Colors.yellow, 'title':'排行榜','text':''},
-      {'icon':Icons.assessment,'color':Colors.red[100], 'title':'排行榜','text':''},
+      {'icon':Icons.date_range,'color':Colors.brown, 'title':'签到','text':'未签到','value':0},
+      {'icon':Icons.filter_none,'color':Colors.orange, 'title':'任务中心','text':'完成度37.5%','value':1},
+      {'icon':Icons.equalizer,'color':Colors.yellow, 'title':'排行榜','text':'','value':0},
+      {'icon':Icons.assessment,'color':Colors.red[100], 'title':'排行榜','text':'','value':0},
     ],
     [
-      {'icon':Icons.monetization_on,'color':Colors.red[100], 'title':'商城','text':''},
+      {'icon':Icons.monetization_on,'color':Colors.red[100], 'title':'商城','text':'','value':0},
     ]
   ];
 
@@ -43,7 +40,7 @@ class VaeExploreScreenState extends State<VaeExploreScreen> with SingleTickerPro
     for(int i=0; i<listButton.length;i++){
       List<Widget> _list = [];
       for(int j=0; j<listButton[i].length;j++){
-        _list.add(NavButton(listButton[i][j]['icon'], listButton[i][j]['color'], listButton[i][j]['title'],text: listButton[i][j]['text']));
+        _list.add(NavButton(listButton[i][j]['icon'], listButton[i][j]['color'], listButton[i][j]['title'],text: listButton[i][j]['text'],value: listButton[i][j]['value']));
       }
       body.add(Container(
         color: Colors.white,
@@ -106,7 +103,18 @@ class VaeExploreScreenState extends State<VaeExploreScreen> with SingleTickerPro
     );
   }
 
-  Widget NavButton(IconData icon, Color iconColor, String title, {String text=''}){
+  Widget NavButton(IconData icon, Color iconColor, String title, {String text='', int value=0}){
+    TextStyle redtextstyle = TextStyle(fontSize: 8,color: Colors.white);
+    Widget redB = value>0 ? Stack(
+      alignment: Alignment.center,
+      children: <Widget>[
+//        Text(value.toString(),style: TextStyle(fontSize: 8,color: Colors.white),),
+        Badge(
+          badgeContent: value>0 && value<100 ? Text(value.toString(),style: redtextstyle,) : Text('99+',style: redtextstyle,),
+          child: Icon(icon,size: 28,color: iconColor),
+        ),
+      ],
+    ) : Icon(icon,size: 28,color: iconColor);
    return Container(
      padding: EdgeInsets.all(10),
      decoration: new BoxDecoration(
@@ -117,7 +125,7 @@ class VaeExploreScreenState extends State<VaeExploreScreen> with SingleTickerPro
        children: <Widget>[
          Row(
            children: <Widget>[
-             Icon(icon,size: 28,color: iconColor),
+            redB,
              Padding(padding: EdgeInsets.only(left: 10),child: Text(title, style: TextStyle(fontSize: 16,fontWeight: FontWeight.w300),),)
            ],
          ),
@@ -134,7 +142,12 @@ class VaeExploreScreenState extends State<VaeExploreScreen> with SingleTickerPro
 }
 
 class _RoundPaint extends CustomPainter {
+  int value;
   // 画红点
+  _RoundPaint(int value){
+    this.value = value;
+  }
+
   Paint _paint = new Paint()
     ..color = Colors.red
     ..strokeWidth = 1
@@ -144,8 +157,8 @@ class _RoundPaint extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // TODO: implement paint
     canvas.drawCircle(
-        Offset(35.0, 0.0),
-        4.0,
+        Offset(30.0, 0.0),
+        6.0,
         _paint
     );
   }
