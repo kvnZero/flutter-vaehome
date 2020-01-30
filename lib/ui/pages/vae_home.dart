@@ -3,6 +3,7 @@ import 'package:flutter_vaehome/ui/pages/vae/vae_home_index.dart';
 import 'package:flutter_vaehome/ui/pages/group/vae_group_index.dart';
 import 'package:flutter_vaehome/ui/pages/explore/vae_explore_index.dart';
 import 'package:flutter_vaehome/ui/pages/message/vae_message_index.dart';
+import 'package:flutter_vaehome/ui/pages/my/vae_my_index.dart';
 
 class VaeHome extends StatefulWidget{
   @override
@@ -37,6 +38,7 @@ class VaeHomeState extends State<VaeHome>{
           VaeGroupScreen(),
           VaeExploreScreen(),
           VaeMessageScreen(),
+          VaeMyScreen()
         ],
         physics: NeverScrollableScrollPhysics(), //不重复滑动效果？
       ),
