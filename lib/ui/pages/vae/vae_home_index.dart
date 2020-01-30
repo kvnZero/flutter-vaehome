@@ -71,13 +71,13 @@ class VaeHomeScreenState extends State<VaeHomeScreen> with SingleTickerProviderS
         flexibleSpace: FlexibleSpaceBar(
           titlePadding: EdgeInsets.all(0),
           title: TabBar(
-            tabs: tabs.map((e)=>Tab(child: Text(e,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15,color: Colors.black54),))).toList(),
+            tabs: tabs.map((e)=>Tab(child: Text(e,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15,),))).toList(),
             controller: _tabController,
             indicator: MyUnderlineTabIndicator(
                 borderSide: BorderSide(width: 2.0, color: Colors.lightBlue)
             ),
             labelColor: Colors.lightBlue,
-            unselectedLabelColor: Colors.black26,
+            unselectedLabelColor: Colors.black54,
             labelStyle: TextStyle(fontSize: 15),
           ),
         ),

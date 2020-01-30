@@ -47,14 +47,14 @@ class VaeGroupScreenState extends State<VaeGroupScreen> with SingleTickerProvide
           child: TabBar(
             tabs: tabs.map((e)=>Tab(child: CustomPaint(
               painter: showRed[e] ? _RoundPaint() : null,
-              child: Text(e,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15,color: Colors.black54),),
+              child: Text(e,style: TextStyle(fontWeight: FontWeight.w600,fontSize: 15),),
             ),)).toList(),
             controller: _tabController,
             indicator: MyUnderlineTabIndicator(
                 borderSide: BorderSide(width: 2.0, color: Colors.lightBlue)
             ),
             labelColor: Colors.lightBlue,
-            unselectedLabelColor: Colors.black,
+            unselectedLabelColor: Colors.black54,
             labelStyle: TextStyle(fontSize: 16),
           ),)
         ),
