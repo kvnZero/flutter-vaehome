@@ -21,18 +21,16 @@ class SwiperWidgetState extends State<SwiperWidget> {
       child: Padding(
         padding: EdgeInsets.only(top:10,bottom: 20),
         child: Swiper(
-            key: UniqueKey(),
-            index: 0,
-            itemCount: 3,
-            viewportFraction: 0.8,
-            scale: 0.8,
-            loop: false,
-            itemBuilder: (context, index) {
-              return Container(
-                color: Colors.grey,
-                child: CardWidge()
-              );
-            }),
+          itemCount: 3,
+          viewportFraction: 0.8,
+          scale: 0.8,
+          loop: false,
+          itemBuilder: (context, index) {
+            return Container(
+              color: Colors.grey,
+              child: CardWidge()
+            );
+          }),
       )
     );
   }

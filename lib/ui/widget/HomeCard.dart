@@ -10,8 +10,9 @@ class CardWidgeState extends State<CardWidge>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return  Scaffold(
-        body: Padding(padding: EdgeInsets.all(20.0),
+    return Container(
+      color: Colors.white,
+        child: Padding(padding: EdgeInsets.all(20.0),
           child: Column(mainAxisAlignment: MainAxisAlignment.start,children: <Widget>[
             Container(height: 30,child:
             Stack(

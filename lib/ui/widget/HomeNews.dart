@@ -110,7 +110,7 @@ class HomeNewsState extends State<HomeNews> with SingleTickerProviderStateMixin{
           },
         ),
       ),
-      child: News(),
+      child: NewsWidget(''),
 //        child: ListView.builder(
 //            itemCount: 5,
 //            itemBuilder: (content, i){

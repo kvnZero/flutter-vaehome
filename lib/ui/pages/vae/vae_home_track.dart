@@ -1,10 +1,12 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:flutter_vaehome/model/news.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vaehome/ui/widget/MySwiper.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:flutter_vaehome/ui/widget/HomeNews.dart';
 import 'package:flutter_vaehome/ui/widget/NewsListWidget.dart';
-import 'package:flutter_vaehome/ui/widget/TestW.dart';
 
 class VaeTrackScreen extends StatefulWidget{
   @override
@@ -16,14 +18,38 @@ class VaeTrackScreen extends StatefulWidget{
 
 class VaeTrackScreenState extends State<VaeTrackScreen>{
   var bannerUrl;
+  Map<int,List> news = {
+    1:[],
+    2:[],
+    3:[],
+    4:[],
+    5:[],
+  };
+  int page = 1;
+  int selectIndex = 1;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    getBanner();
+    getNews();
   }
 
-  Future getPageInfo() async{
+  Future getNews({int index=1,int page=1,int size=10}) async{
+    //这里加载新闻列表信息
+    Future<String> loadString = DefaultAssetBundle.of(context).loadString("data/News.json");
+    loadString.then((String value){
+      setState(() {
+        Map dataMap = json.decode(value);
+        if(news[index].length==0){
+          news[index] = dataMap['result'];
+        }
+      });
+    });
+  }
+
+  Future getBanner() async{
     setState(() {
       bannerUrl = "http://5b0988e595225.cdn.sohucs.com/images/20200103/0eddf8d53c1e4262aef9952f3c8bbfc3.jpeg";
     });
@@ -32,31 +58,38 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    getPageInfo();
-    return  RefreshIndicator(
-          child: ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, i) => buildWidget(i),
-//            controller: _controller,
-          ),
 
-//          new ListView(
-//            children: <Widget>[
-//
-//
-////              SwiperWidget(),
-////              HomeNews()
-////              Expanded(child: TestW(),)
-////              TestW()
-//            ],
-//          ),
+    if(news[selectIndex]==null){
+      return Center(
+        // CircularProgressIndicator是一个圆形的Loading进度条
+        child: CircularProgressIndicator(),
+      );
+    }
+
+    return  RefreshIndicator(
+          child:new ListView(
+            children: <Widget>[
+              pageCover(),
+              showMoreInfo(),
+              SwiperWidget(),
+              NewsButtom(),
+              HomeNewsList(),
+            ],
+          ),
           onRefresh: _onRefresh);
   }
 
   Future<Null> _onRefresh() async {
     await Future.delayed(Duration(seconds: 3),(){
-      print("刷新页面");
-      getPageInfo();
+      news = {
+        1:[],
+        2:[],
+        3:[],
+        4:[],
+        5:[],
+      };
+      getBanner();
+      getNews(index:selectIndex);
     });
   }
 
@@ -113,9 +146,6 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
   }
 
   Widget NewsButtom (){
-    int selectIndex = 1;
-    TabController _tabController;
-//  ScrollController _scrollController;
     List newTabs = ['全部', '新闻', '专访', '图集', '视频'];
     TextStyle selectFontStyle = new TextStyle(
         color: Colors.lightBlue,
@@ -128,7 +158,7 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
       fontWeight: FontWeight.normal,
       fontSize: 16,
     );
-    return new CupertinoNavigationBar(
+    return CupertinoNavigationBar(
       actionsForegroundColor: Colors.lightBlue,
       backgroundColor: Colors.white,
       border: null,
@@ -148,21 +178,28 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
         borderColor: Colors.white,
         pressedColor: Colors.white,
         onValueChanged: (index){
-          print("chick button");
           setState(() {
             selectIndex = index;
+            getNews(index: index);
           });
         },
       ),
     );
   }
 
-  Widget buildWidget(i){
-    if(i==0) return pageCover();
-    if(i==1) return showMoreInfo();
-    if(i==2) return SwiperWidget();
-    if(i==3) return NewsButtom();
-    return News();
+  Widget HomeNewsList(){
+    if(news[selectIndex].length==0){
+      return Center(
+        // 如果里面没有数据则现实加载进度
+        child: Padding(padding: EdgeInsets.only(top: 30),child: CircularProgressIndicator(),),
+      );
+    }
+    List<NewsWidget> _list =[];
+    news[selectIndex].forEach((value){
+      _list.add(NewsWidget(value));
+    });
+    return Column(
+      children: _list.map((e)=>e).toList(),
+    );
   }
-
 }
