@@ -25,9 +25,36 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
     4:[],
     5:[],
   };
+
+  Map<int,int> newsPage = {
+    1:1,
+    2:1,
+    3:1,
+    4:1,
+    5:1,
+  };
+
+  bool work = false;
+
   int page = 1;
   int selectIndex = 1;
+  ScrollController _controller = new ScrollController();
 
+  VaeTrackScreenState(){
+    _controller.addListener((){
+      var maxScroll = _controller.position.maxScrollExtent;
+      var pixels = _controller.position.pixels;
+      if(maxScroll == pixels){
+        if(work==true){
+          return;
+        }
+        work = true;
+        getNews(index:selectIndex, page:newsPage[selectIndex]+1);
+        work = false;
+      }
+    });
+  }
+  
   @override
   void initState() {
     // TODO: implement initState
@@ -42,8 +69,11 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
     loadString.then((String value){
       setState(() {
         Map dataMap = json.decode(value);
-        if(news[index].length==0){
+        if(news[index].length==0 && page==1){
           news[index] = dataMap['result'];
+        }
+        if(news[index].length>1 && page>1){
+          news[index].addAll(dataMap['result']);
         }
       });
     });
@@ -68,6 +98,7 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
 
     return  RefreshIndicator(
           child:new ListView(
+            controller: _controller,
             children: <Widget>[
               pageCover(),
               showMoreInfo(),
@@ -76,7 +107,8 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
               HomeNewsList(),
             ],
           ),
-          onRefresh: _onRefresh);
+          onRefresh: _onRefresh,
+          );
   }
 
   Future<Null> _onRefresh() async {
@@ -87,6 +119,13 @@ class VaeTrackScreenState extends State<VaeTrackScreen>{
         3:[],
         4:[],
         5:[],
+      };
+      newsPage = {
+        1:1,
+        2:1,
+        3:1,
+        4:1,
+        5:1,
       };
       getBanner();
       getNews(index:selectIndex);
