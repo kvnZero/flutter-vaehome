@@ -38,6 +38,9 @@
       <td align="center" width="200" valign="top">
         <img src="image/9.png" width=200>
       </td>
+      <td align="center" width="200" valign="top">
+        <img src="image/10.png" width=200>
+      </td>
      </tr>
   </tbody>
 </table>
@@ -54,6 +57,7 @@
   - sticky_headers : ^0.1.8
   - photo_view : ^0.9.1
   - badges: ^1.1.0
+  - flutter_html: ^0.11.1
 
 ## 开发和调试环境
 用的是Mac自带的ios模拟器(Iphone 11 Pro Max)开发 安卓机调试是红米Note5;
