@@ -89,8 +89,8 @@ class VaeScheduleScreenState extends State<VaeScheduleScreen>{
             child: Text("2019-12", style: TextStyle(color: Colors.black26,fontSize: 16),),),
           content: Column(
               children: <Widget>[
-                new Container(height: 130, child: FlatButton(onPressed: _onRefresh, child: StepWidget())),
-                new Container(height: 130, child: FlatButton(onPressed: _onRefresh, child: StepWidget())),
+                new Container(height: 130, child: FlatButton(onPressed: (){}, child: StepWidget())),
+                new Container(height: 130, child: FlatButton(onPressed: (){}, child: StepWidget())),
               ],
             ),
           ),
